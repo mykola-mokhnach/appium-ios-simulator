@@ -1,3 +1,9 @@
+## [8.2.3](https://github.com/appium/appium-ios-simulator/compare/v8.2.2...v8.2.3) (2026-06-19)
+
+### Miscellaneous Chores
+
+* **deps-dev:** Bump @types/node from 25.9.4 to 26.0.0 ([#483](https://github.com/appium/appium-ios-simulator/issues/483)) ([e8411b5](https://github.com/appium/appium-ios-simulator/commit/e8411b513d758f6e3877b24bd526e62515ac512b))
+
 ## [8.2.2](https://github.com/appium/appium-ios-simulator/compare/v8.2.1...v8.2.2) (2026-06-19)
 
 ### Miscellaneous Chores
