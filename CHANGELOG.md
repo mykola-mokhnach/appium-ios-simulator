@@ -1,3 +1,9 @@
+## [8.2.2](https://github.com/appium/appium-ios-simulator/compare/v8.2.1...v8.2.2) (2026-06-19)
+
+### Miscellaneous Chores
+
+* **deps:** Bump actions/checkout from 6 to 7 ([#484](https://github.com/appium/appium-ios-simulator/issues/484)) ([74754e1](https://github.com/appium/appium-ios-simulator/commit/74754e10b366293cbb73acd705b8348a9ee8b0f1))
+
 ## [8.2.1](https://github.com/appium/appium-ios-simulator/compare/v8.2.0...v8.2.1) (2026-06-10)
 
 ### Bug Fixes
