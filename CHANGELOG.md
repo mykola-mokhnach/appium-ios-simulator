@@ -1,3 +1,9 @@
+## [8.2.6](https://github.com/appium/appium-ios-simulator/compare/v8.2.5...v8.2.6) (2026-07-01)
+
+### Miscellaneous Chores
+
+* downgrade conventional-changelog-conventionalcommits to v9 ([#487](https://github.com/appium/appium-ios-simulator/issues/487)) ([cadb76e](https://github.com/appium/appium-ios-simulator/commit/cadb76e3c5065d67072f146ed6b0aca4997f9a37))
+
 ## [8.2.5](https://github.com/appium/appium-ios-simulator/compare/v8.2.4...v8.2.5) (2026-07-01)
 
 ## [8.2.4](https://github.com/appium/appium-ios-simulator/compare/v8.2.3...v8.2.4) (2026-06-29)
