@@ -1,11 +1,13 @@
 import {killAllSimulators, MOBILE_SAFARI_BUNDLE_ID} from '../../lib/utils';
 import {getSimulator} from '../../lib/simulator';
+import type {Simulator} from '../../lib/types';
 import {Simctl} from 'node-simctl';
 import {retryInterval, waitForCondition} from 'asyncbox';
 import {LONG_TIMEOUT, verifyStates} from './helpers';
 import {use as chaiUse, expect} from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import {getUIKitCatalogPath, UICATALOG_BUNDLE_ID} from '../setup';
+import {describe, it, before, afterEach, beforeEach, after, type TestContext} from 'node:test';
 
 chaiUse(chaiAsPromised);
 
@@ -27,9 +29,6 @@ async function deleteSimulator(udid: string, version: string): Promise<void> {
 }
 
 describe(`simulator ${OS_VERSION}`, function () {
-  this.timeout(LONG_TIMEOUT);
-  this.retries(2);
-
   let simctl: Simctl;
   let customApp: string;
 
@@ -207,10 +206,7 @@ describe(`simulator ${OS_VERSION}`, function () {
 });
 
 describe(`reuse an already-created already-run simulator ${OS_VERSION}`, function () {
-  this.timeout(LONG_TIMEOUT);
-  this.retries(2);
-
-  let sim: any;
+  let sim: Simulator;
 
   before(async function () {
     await killAllSimulators();
@@ -236,10 +232,8 @@ describe(`reuse an already-created already-run simulator ${OS_VERSION}`, functio
 });
 
 describe('advanced features', function () {
-  let sim: any;
+  let sim: Simulator;
   let customApp: string;
-
-  this.timeout(LONG_TIMEOUT);
 
   before(async function () {
     customApp = await getUIKitCatalogPath();
@@ -297,9 +291,9 @@ describe('advanced features', function () {
   });
 
   describe('configureLocalization', function () {
-    it(`should properly set locale settings`, async function () {
+    it(`should properly set locale settings`, async function (ctx: TestContext) {
       if (typeof sim.configureLocalization !== 'function') {
-        return this.skip();
+        return ctx.skip();
       }
 
       expect(
@@ -323,7 +317,7 @@ describe('advanced features', function () {
   describe('keychains', function () {
     it('should properly backup and restore Simulator keychains', async function () {
       if (await sim.backupKeychains()) {
-        expect(await sim.restoreKeychains('*.db*')).to.be.true;
+        expect(await sim.restoreKeychains(['*.db*'])).to.be.true;
       }
     });
 
@@ -395,9 +389,6 @@ describe('advanced features', function () {
 });
 
 describe(`multiple instances of ${OS_VERSION} simulator on Xcode9+`, function () {
-  this.timeout(LONG_TIMEOUT * 2);
-  this.retries(2);
-
   let simulatorsMapping: Record<string, any> = {};
   const DEVICES_COUNT = 2;
 
@@ -412,7 +403,6 @@ describe(`multiple instances of ${OS_VERSION} simulator on Xcode9+`, function ()
   });
   after(async function () {
     try {
-      await killAllSimulators();
       const simctl = new Simctl();
       for (const udid of Object.keys(simulatorsMapping)) {
         try {
@@ -426,8 +416,12 @@ describe(`multiple instances of ${OS_VERSION} simulator on Xcode9+`, function ()
       simulatorsMapping = {};
     }
   });
-  beforeEach(killAllSimulators);
-  afterEach(killAllSimulators);
+  beforeEach(async function () {
+    await killAllSimulators();
+  });
+  afterEach(async function () {
+    await killAllSimulators();
+  });
 
   it(`should start multiple simulators in 'default' mode`, async function () {
     const simulators = Object.values(simulatorsMapping);
@@ -459,8 +453,7 @@ describe(`multiple instances of ${OS_VERSION} simulator on Xcode9+`, function ()
 });
 
 describe('getWebInspectorSocket', function () {
-  this.timeout(LONG_TIMEOUT);
-  let sim: any;
+  let sim: Simulator;
 
   before(async function () {
     await killAllSimulators();
@@ -481,7 +474,7 @@ describe('getWebInspectorSocket', function () {
     expect(socket).to.include('com.apple.webinspectord_sim.socket');
   });
   describe('two simulators', function () {
-    let sim2: any;
+    let sim2: Simulator;
 
     before(async function () {
       const udid = await new Simctl().createDevice(
@@ -512,7 +505,7 @@ describe('getWebInspectorSocket', function () {
     it('should always get the same socket', async function () {
       let socket = await sim.getWebInspectorSocket();
       for (let i = 0; i < 10; i++) {
-        sim.webInspectorSocket = null;
+        sim._webInspectorSocket = null;
         const socket2 = await sim.getWebInspectorSocket();
         expect(socket).to.eql(socket2);
         socket = socket2;
