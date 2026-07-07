@@ -1,3 +1,9 @@
+## [8.2.7](https://github.com/appium/appium-ios-simulator/compare/v8.2.6...v8.2.7) (2026-07-07)
+
+### Miscellaneous Chores
+
+* Drop mocha ([#490](https://github.com/appium/appium-ios-simulator/issues/490)) ([9cf1c6b](https://github.com/appium/appium-ios-simulator/commit/9cf1c6b1212bde6da2ce783f45f68936c7106ea1))
+
 ## [8.2.6](https://github.com/appium/appium-ios-simulator/compare/v8.2.5...v8.2.6) (2026-07-01)
 
 ### Miscellaneous Chores
