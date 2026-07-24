@@ -1,3 +1,13 @@
+## [9.0.0](https://github.com/appium/appium-ios-simulator/compare/v8.2.8...v9.0.0) (2026-07-24)
+
+### ⚠ BREAKING CHANGES
+
+* Consumers using require('appium-ios-simulator') must switch to import/dynamic import() — the package no longer ships a CommonJS entry point.
+
+### Features
+
+* Migrate the package to ESM ([#496](https://github.com/appium/appium-ios-simulator/issues/496)) ([3d4ec18](https://github.com/appium/appium-ios-simulator/commit/3d4ec18a84acf64489ecf80f01dd57ce56942602))
+
 ## [8.2.8](https://github.com/appium/appium-ios-simulator/compare/v8.2.7...v8.2.8) (2026-07-15)
 
 ### Miscellaneous Chores
