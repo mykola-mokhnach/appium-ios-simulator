@@ -1,3 +1,9 @@
+## [9.1.0](https://github.com/appium/appium-ios-simulator/compare/v9.0.1...v9.1.0) (2026-07-25)
+
+### Features
+
+* Integrate oxc and release configs ([#498](https://github.com/appium/appium-ios-simulator/issues/498)) ([02505a9](https://github.com/appium/appium-ios-simulator/commit/02505a932916c0bc0d7f1e9c90ac0e649fd6208a))
+
 ## [9.0.1](https://github.com/appium/appium-ios-simulator/compare/v9.0.0...v9.0.1) (2026-07-25)
 
 ### Miscellaneous Chores
