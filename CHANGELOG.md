@@ -1,3 +1,9 @@
+## [9.1.1](https://github.com/appium/appium-ios-simulator/compare/v9.1.0...v9.1.1) (2026-07-27)
+
+### Miscellaneous Chores
+
+* Drop chai ([#499](https://github.com/appium/appium-ios-simulator/issues/499)) ([b0cc0ad](https://github.com/appium/appium-ios-simulator/commit/b0cc0ad8170d5d04d898d46ac37e29cf7f44f73a))
+
 ## [9.1.0](https://github.com/appium/appium-ios-simulator/compare/v9.0.1...v9.1.0) (2026-07-25)
 
 ### Features
